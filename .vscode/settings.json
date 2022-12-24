@@ -1,0 +1,16 @@
+{
+    "zenMode.hideStatusBar": true,
+    "zenMode.hideActivityBar": false,
+    "workbench.statusBar.visible": true,
+    "git.enableStatusBarSync": true,
+    "git.decorations.enabled": true,
+    "diffEditor.renderSideBySide": true,
+    "editor.suggest.showInlineDetails": true,
+    "terminal.integrated.tabs.enabled": true,
+    "bracket-pair-colorizer-2.showVerticalScopeLine": true,
+    "workbench.sideBar.location": "left",
+    "workbench.editor.openPositioning": "right",
+    "explorer.enableDragAndDrop": true,
+    "explorer.confirmDelete": true,
+    "explorer.confirmDragAndDrop": true
+}
