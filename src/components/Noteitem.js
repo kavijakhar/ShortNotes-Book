@@ -15,7 +15,7 @@ function Noteitem(props) {
           <h5 className="card-title aligen-aitems-center">{note.title}</h5>
           <p className="card-text"> {note.description}</p>
           <p className="card-text"> {note._id}</p>
-          <MdDeleteOutline  className="mx-3" onClick={()=>{deletenote(note._id)}}/>
+          <MdDeleteOutline  className="mx-3" onClick={()=>{deletenote(note._id);props.showAlert("deleted successfully",'success')}}/>
           <AiOutlineEdit className="mx-3"  onClick={()=>{updateNote(note)}} />
         </div>
       </div>

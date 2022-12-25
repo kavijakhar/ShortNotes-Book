@@ -3,16 +3,16 @@ import noteContext from "../context/notes/NoteContext";
 import Addnote from "./Addnote";
 import Noteitem from "./Noteitem";
 
-function Notes() {
+function Notes(props) {
   const context = useContext(noteContext);
-  const { notes, getNotes,editnote } = context;
+  const { notes, getNotes, editnote } = context;
   useEffect(() => {
     getNotes();
     // eslint-disable-next-line
   }, []);
   const ref = useRef(null);
   const [note, setNote] = useState({
-    id:"",
+    id: "",
     etitle: "",
     edescription: "",
     etag: "default",
@@ -26,6 +26,12 @@ function Notes() {
       etag: currentNote.tag,
     });
   };
+  const handleClick = (e) => {
+    e.preventDefault();
+    editnote(note.id, note.etitle, note.edescription, note.etag,)
+    props.showAlert("updated successfully",'success')
+
+  }
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
 
@@ -33,7 +39,7 @@ function Notes() {
 
   return (
     <>
-      <Addnote />
+      <Addnote showAlert={props.showAlert} />
       <button
         ref={ref}
         type="button"
@@ -43,7 +49,7 @@ function Notes() {
       >
         Launch demo modal
       </button>
-  
+
       <div
         className="modal fade"
         id="exampleModal"
@@ -98,28 +104,28 @@ function Notes() {
                   />
                 </div>
                 <button
-                disabled={note.etitle.length<5 || note.edescription.length<5} 
+                  disabled={note.etitle.length < 5 || note.edescription.length < 5}
                   type="button"
                   data-bs-dismiss="modal"
                   className="btn btn-primary my-3"
-                  onClick={()=>{ editnote(note.id,note.etitle,note.edescription,note.etag,)}}
+                  onClick={handleClick}
                 >
                   update now
                 </button>
                 {/* <button onClick={handleClick}  type="button" className="btn btn-primary">Update Now</button> */}
               </form>
-           </div>
+            </div>
           </div>
         </div>
       </div>
       <div className="row">
         <h3>Your Notes</h3>
         <div >
-        {notes.length === 0 &&'No  notes display'}
-        </div> 
+          {notes.length === 0 && 'No  notes display'}
+        </div>
         {notes.map((note) => {
           return (
-            <Noteitem key={note._id} updateNote={updateNote} note={note} />
+            <Noteitem key={note._id} showAlert={props.showAlert} updateNote={updateNote} note={note} />
           );
         })}
       </div>
