@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const history = useNavigate();
-    const handleLogout=()=>{
+    const handleLogout = () => {
         localStorage.removeItem('token');
         history("/login")
     }
@@ -19,16 +19,16 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname==="/"? "active" :""}`} aria-current="page" to="/">Home</Link>
+                            <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname==="/about"? "active" :""}`} aria-current="page" to="/about">About</Link>
+                            <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} aria-current="page" to="/about">About</Link>
                         </li>
                     </ul>
-                    {!localStorage.getItem('token')?<form className="d-flex">
+                    {!localStorage.getItem('token') ? <form className="d-flex">
                         <Link role="button" to="/login" className="btn btn-primary mx-2" type="submit">Login</Link>
                         <Link role="button" to="/signup" className="btn btn-primary mx-2" type="submit">SignUp</Link>
-                    </form>:<button onClick={handleLogout} className="btn btn-primary">Logout</button>}
+                    </form> : <button onClick={handleLogout} className="btn btn-primary">Logout</button>}
                 </div>
             </div>
         </nav>

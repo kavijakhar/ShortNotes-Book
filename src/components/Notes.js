@@ -125,8 +125,8 @@ function Notes(props) {
           </div>
         </div>
       </div>
-      <div className="row">
-        <h3>Your Notes</h3>
+      <div className="row my-3 mx-1">
+        <h4>Your Notes</h4>
         <div >
           {notes.length === 0 && 'No  notes display'}
         </div>
